@@ -1,7 +1,6 @@
 import React from 'react'
 import Title from './Title'
 import { coursesSecItems } from "../constant/data";
-import { RiArrowRightUpLine } from '@remixicon/react';
 
 const Courses = () => {
     return (
@@ -47,8 +46,8 @@ const Courses = () => {
                                 <p className="text-sm sm:text-base leading-7 text-grey-15/70 mb-5 text-center sm:text-left line-clamp-3">{item.text}</p>
 
                                 {/* btn */}
-                                <button className="mt-auto border border-orange-100 w-14 h-14 flex items-center justify-center rounded-md text-orange-500 transition-colors hover:bg-orange-500 hover:text-white ml-auto">
-                                    <RiArrowRightUpLine size={26} />
+                                <button className="mt-auto w-full h-12 rounded-md bg-orange-75 text-sm font-medium transition-colors hover:bg-orange-80">
+                                    Get it now
                                 </button>
                             </div>
                         </div>
@@ -64,4 +63,4 @@ const Courses = () => {
 export default Courses
 
 
-   
+
