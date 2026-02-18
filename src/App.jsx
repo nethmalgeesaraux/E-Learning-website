@@ -5,6 +5,7 @@ import Benefits from './components/Benefits'
 import Courses from './components/Courses'
 import Testimonials from './components/testimonials'
 import FaqSec from './components/FaqSec'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
      <Testimonials/>
      <FaqSec/>
    </main>
+   <Footer/>
  
    </>
   )
