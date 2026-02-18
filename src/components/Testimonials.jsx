@@ -33,7 +33,7 @@ const Testimonials = () => {
                   </p>
                 </div>
 
-                <button className='secondary-btn !px-5 !py-3 text-sm'>
+                <button className='px-5 py-3 bg-white border border-white-95 rounded-md text-sm font-medium hover:bg-orange-90 transition-colors'>
                   Read Full Story
                 </button>
               </div>
