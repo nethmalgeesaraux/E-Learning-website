@@ -2,10 +2,13 @@ import React from 'react'
 import Title from './Title'
 import { benefitItems } from "../constant/data";
 import { RiArrowRightUpLine } from '@remixicon/react';
+import { getRevealStyles, useScrollReveal } from '../motion/animations';
 
 const Benefits = () => {
+    const { ref: sectionRef, isVisible } = useScrollReveal({ threshold: 0.12 });
+
     return (
-        <section className='section'>
+        <section id='about' ref={sectionRef} className='section scroll-mt-24' style={getRevealStyles(isVisible)}>
             <div className="container">
                 {/* Title */}
                 <Title title='Benefits' text='
@@ -17,9 +20,13 @@ const Benefits = () => {
 
                 {/* Card wrapper */}
                 <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 mt-12 lg:mt-16">
-                    {benefitItems.map((item) => (
+                    {benefitItems.map((item, index) => (
                         // Card
-                        <div className="bg-white p-10 flex flex-col rounded-xl">
+                        <div
+                            key={item.id}
+                            className="bg-white p-10 flex flex-col rounded-xl"
+                            style={getRevealStyles(isVisible, 0.07 * (index + 1), 0.5, 18)}
+                        >
                             {/* icon */}
                             <div className="bg-orange-75 w-[55%] h-24 flex items-center 
                             justify-center mx-auto rounded-xl mb-8">

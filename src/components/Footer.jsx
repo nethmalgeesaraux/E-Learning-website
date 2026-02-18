@@ -1,13 +1,16 @@
 import React from 'react'
 import { contactInfo, footerLists, socialIcons } from '../constant/data'
+import { getRevealStyles, useScrollReveal } from '../motion/animations'
 
 const Footer = () => {
+    const { ref: sectionRef, isVisible } = useScrollReveal({ threshold: 0.08 })
+
     return (
-        <footer className='section pb-10'>
+        <footer ref={sectionRef} className='section pb-10' style={getRevealStyles(isVisible)}>
             <div className='container'>
                 <div className='bg-white rounded-xl border border-white-95 p-6 sm:p-8 lg:p-10'>
                     <div className='grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-10 border-b border-white-95 pb-8 lg:pb-10'>
-                        <div>
+                        <div style={getRevealStyles(isVisible, 0.06, 0.5, 14)}>
                             <a href='#' className='inline-block'>
                                 <img
                                     src='/images/logo.png'
@@ -34,7 +37,7 @@ const Footer = () => {
                             </div>
                         </div>
 
-                        <div className='grid grid-cols-2 sm:grid-cols-3 gap-6'>
+                        <div className='grid grid-cols-2 sm:grid-cols-3 gap-6' style={getRevealStyles(isVisible, 0.14, 0.5, 14)}>
                             {footerLists.map((list) => (
                                 <div key={list.id}>
                                     <h4 className='text-lg mb-3'>{list.title}</h4>

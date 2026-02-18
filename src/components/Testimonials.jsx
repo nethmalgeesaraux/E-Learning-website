@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import Title from './Title'
 import { testimonialsItems } from '../constant/data'
 import { RiArrowLeftLine, RiArrowRightLine } from '@remixicon/react'
+import { getRevealStyles, useScrollReveal } from '../motion/animations'
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const { ref: sectionRef, isVisible } = useScrollReveal({ threshold: 0.14 })
 
   const handleSlide = (direction) => {
     if (direction === 'next') {
@@ -20,7 +22,7 @@ const Testimonials = () => {
   }
 
   return (
-    <section className='section'>
+    <section id='pricing' ref={sectionRef} className='section scroll-mt-24' style={getRevealStyles(isVisible)}>
       <div className='container'>
         <Title
           title='Our Testimonials'
@@ -37,6 +39,7 @@ const Testimonials = () => {
               <article
                 key={item.id}
                 className='bg-white rounded-xl overflow-hidden border border-white-95 flex flex-col min-w-full'
+                style={getRevealStyles(isVisible, 0.12, 0.45, 14)}
               >
                 <p className='p-6 sm:p-8 text-grey-15/75'>
                   {item.text}
@@ -65,7 +68,7 @@ const Testimonials = () => {
           </div>
         </div>
 
-        <div className='mt-8 flex items-center justify-center gap-3'>
+        <div className='mt-8 flex items-center justify-center gap-3' style={getRevealStyles(isVisible, 0.2, 0.45, 14)}>
           <button
             onClick={() => handleSlide('prev')}
             className='w-11 h-11 rounded-md bg-orange-75 text-grey-15 flex items-center justify-center hover:bg-orange-70 transition-colors'

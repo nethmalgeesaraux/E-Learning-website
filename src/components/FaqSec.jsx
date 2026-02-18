@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import { RiAddLine, RiSubtractLine, RiArrowRightLine } from '@remixicon/react'
 import { faqItems } from '../constant/data'
+import { getRevealStyles, useScrollReveal } from '../motion/animations'
 
 const FaqSec = () => {
   const [openId, setOpenId] = useState(faqItems[0]?.id)
+  const { ref: sectionRef, isVisible } = useScrollReveal({ threshold: 0.12 })
 
   return (
-    <section className='section'>
+    <section id='contact' ref={sectionRef} className='section scroll-mt-24' style={getRevealStyles(isVisible)}>
       <div className='container'>
         <div className='bg-white rounded-xl border border-white-95 p-5 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10'>
-          <div>
+          <div style={getRevealStyles(isVisible, 0.06, 0.5, 16)}>
             <h2>Frequently Asked Questions</h2>
             <p className='mt-4 text-grey-15/75'>
               Still you have any questions? Contact our Team via support@skillbridge.com
@@ -19,7 +21,7 @@ const FaqSec = () => {
             </button>
           </div>
 
-          <div className='bg-white-99 border border-white-95 rounded-xl p-4 sm:p-5'>
+          <div className='bg-white-99 border border-white-95 rounded-xl p-4 sm:p-5' style={getRevealStyles(isVisible, 0.14, 0.5, 16)}>
             {faqItems.map((item, index) => {
               const isOpen = openId === item.id
 

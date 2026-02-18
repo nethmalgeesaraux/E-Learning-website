@@ -1,10 +1,13 @@
 import React from 'react'
 import Title from './Title'
 import { coursesSecItems } from "../constant/data";
+import { getRevealStyles, useScrollReveal } from '../motion/animations';
 
 const Courses = () => {
+    const { ref: sectionRef, isVisible } = useScrollReveal({ threshold: 0.12 });
+
     return (
-        <section className='section'>
+        <section id='courses' ref={sectionRef} className='section scroll-mt-24' style={getRevealStyles(isVisible)}>
             <div className='container'>
                 {/* Title */}
                 <Title
@@ -15,9 +18,13 @@ const Courses = () => {
 
                 {/* Card wrapper */}
                 <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 mt-10 lg:mt-12">
-                    {coursesSecItems.map((item) => (
+                    {coursesSecItems.map((item, index) => (
                         // Card
-                        <div key={item.id} className="bg-white rounded-xl shadow hover:shadow-lg transition flex flex-col h-full">
+                        <div
+                            key={item.id}
+                            className="bg-white rounded-xl shadow hover:shadow-lg transition flex flex-col h-full"
+                            style={getRevealStyles(isVisible, 0.08 * (index + 1), 0.5, 18)}
+                        >
                             {/* img */}
                             <div className="overflow-hidden rounded-t-xl">
                                 <img
@@ -61,6 +68,5 @@ const Courses = () => {
 }
 
 export default Courses
-
 
 

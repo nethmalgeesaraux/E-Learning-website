@@ -2,13 +2,16 @@ import React from 'react'
 import { heroLogos } from "../constant/data";
 import { RiPlayFill } from '@remixicon/react';
 import Marquee from 'react-fast-marquee';
+import { getRevealStyles, useScrollReveal } from '../motion/animations';
 
 const Hero = () => {
+    const { ref: heroRef, isVisible } = useScrollReveal({ threshold: 0.08 });
+
     return (
-        <section>
+        <section id="home" ref={heroRef} className="scroll-mt-24" style={getRevealStyles(isVisible, 0, 0.55, 20)}>
             <div className="container">
                 {/* content */}
-                <div className="mt-[50px] md:mt-20 text-center">
+                <div className="mt-[50px] md:mt-20 text-center" style={getRevealStyles(isVisible, 0.08, 0.55, 20)}>
                     {/* Title */}
                     <div className="relative max-w-max mx-auto pt-8 pl-8">
                         <span className="absolute top-0 left-0">
@@ -79,7 +82,7 @@ const Hero = () => {
                 </div>
                 {/* Banner */}
                 <figure className="relative rounded-xl overflow-hidden mt-10 md:mt-14 
-                lg:mt-[50px] max-w-[920px] w-full h-[500px] mx-auto">
+                lg:mt-[50px] max-w-[920px] w-full h-[500px] mx-auto" style={getRevealStyles(isVisible, 0.18, 0.55, 18)}>
                     <img
                         src="/images/hero-banner.png"
                         alt="hero-banner"
